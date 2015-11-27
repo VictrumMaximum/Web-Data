@@ -1,6 +1,7 @@
 <html>
 <head>
 <title>99 problems</title>
+<link rel="stylesheet" type="text/css" href="TodoStyle.css">
 </head>
 <body>
 <header>
@@ -28,24 +29,23 @@
 			Date<br> <input type="text" id="datein">  <br>
 			reminder<br> <input type="text" class="reminder-in" id="remindin"> <br>
 			Importance rating<br> <input type="text" class="rating-in" id="ratingin"><br>
-			<button class="add" class="add-reminder" onclick="addItem()"> Add</button>
+			<button class="add-reminder" onclick="addItem()"> Add</button>
 		</section>
 		
 		<br>
 		<!-- section with todo list -->
 		<section class="list">
 			<h2> Problem List</h2>
-				<!-- a example section that js will duplicate -->
-				<section class="section-todo" id="sectiontodo">
+			<div id="viewer"></div>
+				<!-- a example section that js will duplicate
+				<section <!-- class="section-todo" id="sectiontodo">
 						<h3 class="name-todo"> example name</h3>
 						<q class="description-todo"> example description</q><br>
 						<q class="date-todo"> example date </q><br>
 						<q	class="reminder-todo"> example reminder</q><br>
 						<q class="rating-todo">	example rating</q><br>
-						<button class="delete"> Delete</button>
-						<button class="edit">Edit</button>
-						<button class="done">Done</button>
-				</section>
+						
+				</section> -->
 		</section>
 
 		

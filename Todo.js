@@ -40,23 +40,30 @@ function  TodoItem(name, Date, desc, remind, rating) {
 			
 	function delItem(index) {
 		list.pop(index);
+		var div = document.getElementById("viewdiv" + index);
+		document.getElementById("viewer").removeChild(div);
 	}
 			
 	function view() {
 		console.log(list.toString());
-		var content = "";
 		for(var i = 0; i < list.length; i++) {
-			content = "Name: " + list[i].name + 
+			var content = "Name: " + list[i].name + 
 			"<br>Description: " + list[i].desc +
 			"<br>Date: " + list[i].Date +
 			"<br>Reminder: " + list[i].remind +
-			"<br>Rating: " + list[i].rating;
-			
-			var newDiv = document.createElement("div");
-			newDiv.id = "viewdiv" + i;
-			document.getElementById.appendChild(newDiv);
-			document.getElementById("viewdiv" + i).innerHTML = content;
-			
+			"<br>Rating: " + list[i].rating +
+			"<br> <button class=\"delete\" id=\"delete" + i + "\" onclick=\"delItem(" + i + ")\"> Delete</button>" +
+				"<button class=\"edit\">Edit</button>" +
+				"<button class=\"done\">Done</button>";
+			if(true) {
+				var newDiv = document.createElement("div");
+				newDiv.id = "viewdiv" + i;
+				newDiv.className = "viewclass";
+				var br = document.createElement("br");
+				document.getElementById("viewer").appendChild(newDiv);
+				document.getElementById("viewer").appendChild(br);
+				document.getElementById("viewdiv" + i).innerHTML = content;
+			}
 		}	
 	}
 			
