@@ -34,7 +34,18 @@ function  TodoItem(name, Date, desc, remind, rating) {
 		item.setDate(document.getElementById("datein").value);
 		item.setRemind(document.getElementById("remindin").value);
 		item.setRating(document.getElementById("ratingin").value);
+		
+		// add todo to the list
 		list.push(item);
+		
+		// crear text field
+		document.getElementById("namein").value = "";
+		document.getElementById("descin").value = "";
+		document.getElementById("datein").value = "";
+		document.getElementById("remindin").value = "";
+		document.getElementById("ratingin").value = "";
+		
+		// give notification
 		alert("item added to list!");
 	}
 			
@@ -42,6 +53,7 @@ function  TodoItem(name, Date, desc, remind, rating) {
 		list.pop(index);
 		var div = document.getElementById("viewdiv" + index);
 		document.getElementById("viewer").removeChild(div);
+		
 	}
 			
 	function view() {
@@ -55,7 +67,7 @@ function  TodoItem(name, Date, desc, remind, rating) {
 			"<br> <button class=\"delete\" id=\"delete" + i + "\" onclick=\"delItem(" + i + ")\"> Delete</button>" +
 				"<button class=\"edit\">Edit</button>" +
 				"<button class=\"done\">Done</button>";
-			if(true) {
+			//if(true) {
 				var newDiv = document.createElement("div");
 				newDiv.id = "viewdiv" + i;
 				newDiv.className = "viewclass";
@@ -63,7 +75,7 @@ function  TodoItem(name, Date, desc, remind, rating) {
 				document.getElementById("viewer").appendChild(newDiv);
 				document.getElementById("viewer").appendChild(br);
 				document.getElementById("viewdiv" + i).innerHTML = content;
-			}
+			//}
 		}	
 	}
 			
