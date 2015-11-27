@@ -28,7 +28,7 @@ function  TodoItem(name, Date, desc, remind, rating) {
 			
 			
 	function addItem() {
-		var item = new TodoItem("", "");
+		var item = new TodoItem();
 		item.setName(document.getElementById("namein").value);
 		item.setDesc(document.getElementById("descin").value);
 		item.setDate(document.getElementById("datein").value);
@@ -43,27 +43,37 @@ function  TodoItem(name, Date, desc, remind, rating) {
 		var div = document.getElementById("viewdiv" + index);
 		document.getElementById("viewer").removeChild(div);
 	}
-			
+	var counter = 0;
 	function view() {
 		console.log(list.toString());
+		var content = "";
+		if(!(list.length == counter)) {
 		for(var i = 0; i < list.length; i++) {
-			var content = "Name: " + list[i].name + 
+			content = "Name: " 	+ list[i].name + 
 			"<br>Description: " + list[i].desc +
-			"<br>Date: " + list[i].Date +
-			"<br>Reminder: " + list[i].remind +
-			"<br>Rating: " + list[i].rating +
+			"<br>Date: " 		+ list[i].Date +
+			"<br>Reminder: " 	+ list[i].remind +
+			"<br>Rating: " 		+ list[i].rating +
 			"<br> <button class=\"delete\" id=\"delete" + i + "\" onclick=\"delItem(" + i + ")\"> Delete</button>" +
 				"<button class=\"edit\">Edit</button>" +
 				"<button class=\"done\">Done</button>";
-			if(true) {
-				var newDiv = document.createElement("div");
-				newDiv.id = "viewdiv" + i;
-				newDiv.className = "viewclass";
-				var br = document.createElement("br");
-				document.getElementById("viewer").appendChild(newDiv);
-				document.getElementById("viewer").appendChild(br);
-				document.getElementById("viewdiv" + i).innerHTML = content;
-			}
+				
+					//create div variable
+					var newDiv = document.createElement("div");
+					newDiv.id = "viewdiv" + i;
+					newDiv.className = "viewclass";
+					//create br variable
+					var br = document.createElement("br");
+					//insert div
+					document.getElementById("viewer").appendChild(newDiv);
+					//insert br
+					document.getElementById("viewer").appendChild(br);
+					//insert content in div
+					console.log("content: " + content);
+					document.getElementById("viewdiv" + i).innerHTML = content;
+					console.log("i: " + i);
+					counter = list.length;
+		}
 		}	
 	}
 			
