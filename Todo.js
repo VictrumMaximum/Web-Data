@@ -1,4 +1,3 @@
-alert("fuck");
 function  TodoItem(name, Date, desc, remind, rating) {
 	this.name = name;
 	this.Date = Date;
@@ -57,7 +56,7 @@ function addItem() {
 	"<br>Reminder: " + list[counter].remind +
 	"<br>Rating: " + list[counter].rating +
 	"<br> <button class=\"delete\" id=\"delete" + counter + "\" onclick=\"delItem(" + counter + ");\"> Delete</button>" +
-	"<button class=\"edit\">Edit</button>" +
+	"<button class=\"edit\" id=\"edit" + counter + "\" onclick=\"editItem(" + counter + ");\">Edit</button>" +
 	"<button class=\"done\">Done</button>";
 	
 	var newDiv = document.createElement("div");
@@ -97,5 +96,42 @@ function cleanup(index) {
 		document.getElementById("divBreak" + i).id = "divBreak" + (i-1);
 			
 	}
+}
+
+function editItem(index) {
+	console.log("index: " + index);
+	var name = list[index].name;
+	console.log(name);
+	var desc = list[index].desc;
+	var Date = list[index].Date;
+	var remind = list[index].remind;
+	var rating = list[index].rating;
+	var content = "Name<br> <input type=\"text\" id=\"nameEdit\" value=\"" + name + "\"> <br>" +
+			"Description<br> <input type=\"text\" class=\"description-in\" id=\"descEdit\" value=\"" + desc + "\"> <br>" +
+			"Date<br> <input type=\"text\" id=\"dateEdit\" value=\"" + Date + "\">  <br>" +
+			"reminder<br> <input type=\"text\" class=\"reminder-in\" id=\"remindEdit\" value=\"" + remind + "\"> <br>" +
+			"Importance rating<br> <input type=\"text\" class=\"rating-in\" id=\"ratingEdit\" value=\"" + rating + "\"><br>" +
+			"<button class=\"add-reminder\" onclick=\"saveItem(" + index + ");\">Save</button>";
+	
+	document.getElementById("viewdiv" + index).innerHTML = content;
+}
+
+function saveItem(index) {
+	var name = document.getElementById("nameEdit").value;
+	var desc = document.getElementById("descEdit").value;
+	var Date = document.getElementById("dateEdit").value;
+	var remind = document.getElementById("remindEdit").value;
+	var rating = document.getElementById("ratingEdit").value;
+	
+	var content = "Name: " + name + 
+	"<br>Description: " + desc +
+	"<br>Date: " + Date +
+	"<br>Reminder: " + remind +
+	"<br>Rating: " + rating +
+	"<br> <button class=\"delete\" id=\"delete" + index + "\" onclick=\"delItem(" + index + ");\"> Delete</button>" +
+	"<button class=\"edit\" id=\"edit" + index + "\" onclick=\"editItem(" + index + ");\">Edit</button>" +
+	"<button class=\"done\">Done</button>";
+	
+	document.getElementById("viewdiv" + index).innerHTML = content;
 }
 			
