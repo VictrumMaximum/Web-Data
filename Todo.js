@@ -55,9 +55,9 @@ function addItem() {
 	"<br>Date: " + list[counter].Date +
 	"<br>Reminder: " + list[counter].remind +
 	"<br>Rating: " + list[counter].rating +
-	"<br></div></div><div><button class=\"delete\" id=\"delete" + counter + "\" onclick=\"delItem(" + counter + ");\"> Delete</button>" +
+	"<br></div></div><div id=\"buttons" + counter + "\"><button class=\"delete\" id=\"delete" + counter + "\" onclick=\"delItem(" + counter + ");\"> Delete</button>" +
 	"<button class=\"edit\" id=\"edit" + counter + "\" onclick=\"editItem(" + counter + ");\">Edit</button>" +
-	"<button class=\"done\">Done</button></div>";
+	"<button class=\"done\" id=\"done" + counter + "\" onclick=\"doneItem(" + counter + ");\">Done</button></div>";
 	
 	//var content2 = ;
 	
@@ -68,15 +68,11 @@ function addItem() {
 	var br = document.createElement("br");
 	br.id = "divBreak" + counter;
 	
-	var newDiv2 = document.createElement("div");
-	newDiv2.id = "buttons" + counter;
-	
-	
 	document.getElementById("viewer").appendChild(newDiv);
-	document.getElementById("viewer").appendChild(br);
+	//document.getElementById("viewer").appendChild(br);
 	document.getElementById("viewdiv" + counter).innerHTML = content;
-	//document.getElementById("viewdiv" + counter).setAttribute("onClick", "toggleText(" + counter + ");" );
 	counter++;
+	document.getElementById("counter").innerHTML = "Items in list: " + counter;
 }
 			
 function delItem(index) {
@@ -87,9 +83,10 @@ function delItem(index) {
 	document.getElementById("viewer").removeChild(div);
 	
 	var br = document.getElementById("divBreak" + index);
-	document.getElementById("viewer").removeChild(br);
+	//document.getElementById("viewer").removeChild(br);
 	
 	counter--;
+	document.getElementById("counter").innerHTML = "Items in list: " + counter;
 	cleanup(index);
 }
 			
@@ -102,6 +99,10 @@ function cleanup(index) {
 		document.getElementById("toggler" + i).setAttribute("onClick", "toggleText(" + (i-1) + ");" );
 		document.getElementById("toggler" + i).id = "toggler" + (i-1);
 		document.getElementById("toggle" + i).id = "toggle" + (i-1);
+		document.getElementById("edit" + i).setAttribute("onClick", "editItem(" + (i-1) + ");" );
+		document.getElementById("edit" + i).id = "edit" + (i-1);
+		document.getElementById("done" + i).setAttribute("onClick", "doneItem(" + (i-1) + ");" );
+		document.getElementById("done" + i).id = "done" + (i-1);
 		document.getElementById("viewdiv" + i).id = "viewdiv" + (i-1);
 		document.getElementById("divBreak" + i).id = "divBreak" + (i-1);
 		
@@ -116,12 +117,12 @@ function editItem(index) {
 	var Date = list[index].Date;
 	var remind = list[index].remind;
 	var rating = list[index].rating;
-	var content = "Name<br> <input type=\"text\" id=\"nameEdit\" value=\"" + name + "\"> <br>" +
-			"Description<br> <input type=\"text\" class=\"description-in\" id=\"descEdit\" value=\"" + desc + "\"> <br>" +
-			"Date<br> <input type=\"text\" id=\"dateEdit\" value=\"" + Date + "\">  <br>" +
-			"reminder<br> <input type=\"text\" class=\"reminder-in\" id=\"remindEdit\" value=\"" + remind + "\"> <br>" +
-			"Importance rating<br> <input type=\"text\" class=\"rating-in\" id=\"ratingEdit\" value=\"" + rating + "\"><br>" +
-			"<button class=\"add-reminder\" onclick=\"saveItem(" + index + ");\">Save</button>";
+	var content = "<div class=\"viewclass\">Name: <input type=\"text\" id=\"nameEdit\" value=\"" + name + "\"> <br>" +
+			"Description: <input type=\"text\" class=\"description-in\" id=\"descEdit\" value=\"" + desc + "\"> <br>" +
+			"Date: <input type=\"text\" id=\"dateEdit\" value=\"" + Date + "\">  <br>" +
+			"reminder: <input type=\"text\" class=\"reminder-in\" id=\"remindEdit\" value=\"" + remind + "\"> <br>" +
+			"Importance rating: <input type=\"text\" class=\"rating-in\" id=\"ratingEdit\" value=\"" + rating + "\"></div>" +
+			"<div class=\"buttons\"><button class=\"add-reminder\" onclick=\"saveItem(" + index + ");\">Save</button></div>";
 	
 	document.getElementById("viewdiv" + index).innerHTML = content;
 }
@@ -133,14 +134,14 @@ function saveItem(index) {
 	var remind = document.getElementById("remindEdit").value;
 	var rating = document.getElementById("ratingEdit").value;
 	
-	var content = "Name: " + name + 
-	"<br>Description: " + desc +
+	var content = "<div class=\"viewclass\" id=\"toggler" + index + "\" onClick=\"toggleText(" + index + ");\">Name: " + name + 
+	"<br><div id=\"toggle" + index + "\" class=\"toggle\">Description: " + desc +
 	"<br>Date: " + Date +
 	"<br>Reminder: " + remind +
 	"<br>Rating: " + rating +
-	"<br> <button class=\"delete\" id=\"delete" + index + "\" onclick=\"delItem(" + index + ");\"> Delete</button>" +
+	"<br></div></div><div id=\"buttons" + index + "\"><button class=\"delete\" id=\"delete" + index + "\" onclick=\"delItem(" + index + ");\"> Delete</button>" +
 	"<button class=\"edit\" id=\"edit" + index + "\" onclick=\"editItem(" + index + ");\">Edit</button>" +
-	"<button class=\"done\">Done</button>";
+	"<button class=\"done\" id=\"done" + index + "\" onclick=\"doneItem(" + index + ")\";\>Done</button></div>";
 	
 	document.getElementById("viewdiv" + index).innerHTML = content;
 }
@@ -149,6 +150,11 @@ function toggleText(id) {
     var theText = document.getElementById("toggle" + id);
 	console.log(theText.style.display);
   (theText.style.display=='block') ? theText.style.display='none' : theText.style.display='block' ;  
+}
+
+function doneItem(index) {
+	document.getElementById("toggler" + index).style.textDecoration = "line-through";
+	document.getElementById("buttons" + index).innerHTML = "<div id=\"buttons\"><button class=\"delete\" id=\"delete" + index + "\" onclick=\"delItem(" + index + ");\"> Delete</button>";
 }
 
 /*function sortDate() {
