@@ -29,6 +29,7 @@ TodoItem.prototype.getRating = function() {return this.rating;};
 			
 function addItem() {
 	var item = new TodoItem();
+	var d = new Date();
 	item.setName(document.getElementById("namein").value);
 	item.setDesc(document.getElementById("descin").value);
 	item.setDate(document.getElementById("datein").value);
@@ -50,26 +51,24 @@ function addItem() {
 		
 	console.log(list.toString());
 	
-	var content = "<div class=\"viewclass\" id=\"toggler" + counter + "\" onClick=\"toggleText(" + counter + ");\">Name: " + list[counter].name + 
-	"<br><div id=\"toggle" + counter + "\" class=\"toggle\">Description: " + list[counter].desc +
-	"<br>Date: " + list[counter].Date +
-	"<br>Reminder: " + list[counter].remind +
-	"<br>Rating: " + list[counter].rating +
-	"<br></div></div><div id=\"buttons" + counter + "\"><button class=\"delete\" id=\"delete" + counter + "\" onclick=\"delItem(" + counter + ");\"> Delete</button>" +
-	"<button class=\"edit\" id=\"edit" + counter + "\" onclick=\"editItem(" + counter + ");\">Edit</button>" +
-	"<button class=\"done\" id=\"done" + counter + "\" onclick=\"doneItem(" + counter + ");\">Done</button></div>";
-	
-	//var content2 = ;
+	var content = "<div class=\"viewclass\" id=\"toggler" + counter + "\" onClick=\"toggleText(" + counter + ");\">" +
+		"Name: " + list[counter].name + 
+		"<br><div id=\"toggle" + counter + "\" class=\"toggle\">" +
+		"Description: " + list[counter].desc +
+		"<br>Date: " + list[counter].Date +
+		"<br>Reminder: " + list[counter].remind +
+		"<br>Rating: " + list[counter].rating +
+		"<br></div></div>" +
+		"<div id=\"buttons" + counter + "\">" +
+		"<button class=\"delete\" id=\"delete" + counter + "\" onclick=\"delItem(" + counter + ");\"> Delete</button>" +
+		"<button class=\"edit\" id=\"edit" + counter + "\" onclick=\"editItem(" + counter + ");\">Edit</button>" +
+		"<button class=\"done\" id=\"done" + counter + "\" onclick=\"doneItem(" + counter + ");\">Done</button></div>";
 	
 	var newDiv = document.createElement("div");
 	newDiv.id = "viewdiv" + counter;
 	newDiv.className = "itemclass";
-	console.log("counter" + counter);
-	var br = document.createElement("br");
-	br.id = "divBreak" + counter;
 	
 	document.getElementById("viewer").appendChild(newDiv);
-	//document.getElementById("viewer").appendChild(br);
 	document.getElementById("viewdiv" + counter).innerHTML = content;
 	counter++;
 	document.getElementById("counter").innerHTML = "Items in list: " + counter;
@@ -104,8 +103,6 @@ function cleanup(index) {
 		document.getElementById("done" + i).setAttribute("onClick", "doneItem(" + (i-1) + ");" );
 		document.getElementById("done" + i).id = "done" + (i-1);
 		document.getElementById("viewdiv" + i).id = "viewdiv" + (i-1);
-		document.getElementById("divBreak" + i).id = "divBreak" + (i-1);
-		
 	}
 }
 
@@ -117,7 +114,8 @@ function editItem(index) {
 	var Date = list[index].Date;
 	var remind = list[index].remind;
 	var rating = list[index].rating;
-	var content = "<div class=\"viewclass\">Name: <input type=\"text\" id=\"nameEdit\" value=\"" + name + "\"> <br>" +
+	var content = "<div class=\"viewclass\">" +
+			"Name: <input type=\"text\" id=\"nameEdit\" value=\"" + name + "\"> <br>" +
 			"Description: <input type=\"text\" class=\"description-in\" id=\"descEdit\" value=\"" + desc + "\"> <br>" +
 			"Date: <input type=\"text\" id=\"dateEdit\" value=\"" + Date + "\">  <br>" +
 			"reminder: <input type=\"text\" class=\"reminder-in\" id=\"remindEdit\" value=\"" + remind + "\"> <br>" +
@@ -134,12 +132,16 @@ function saveItem(index) {
 	var remind = document.getElementById("remindEdit").value;
 	var rating = document.getElementById("ratingEdit").value;
 	
-	var content = "<div class=\"viewclass\" id=\"toggler" + index + "\" onClick=\"toggleText(" + index + ");\">Name: " + name + 
-	"<br><div id=\"toggle" + index + "\" class=\"toggle\">Description: " + desc +
+	var content = "<div class=\"viewclass\" id=\"toggler" + index + "\" onClick=\"toggleText(" + index + ");\">" +
+	"Name: " + name + 
+	"<br><div id=\"toggle" + index + "\" class=\"toggle\">" +
+	"Description: " + desc +
 	"<br>Date: " + Date +
 	"<br>Reminder: " + remind +
 	"<br>Rating: " + rating +
-	"<br></div></div><div id=\"buttons" + index + "\"><button class=\"delete\" id=\"delete" + index + "\" onclick=\"delItem(" + index + ");\"> Delete</button>" +
+	"<br></div></div>" +
+	"<div id=\"buttons" + index + "\">" +
+	"<button class=\"delete\" id=\"delete" + index + "\" onclick=\"delItem(" + index + ");\"> Delete</button>" +
 	"<button class=\"edit\" id=\"edit" + index + "\" onclick=\"editItem(" + index + ");\">Edit</button>" +
 	"<button class=\"done\" id=\"done" + index + "\" onclick=\"doneItem(" + index + ")\";\>Done</button></div>";
 	

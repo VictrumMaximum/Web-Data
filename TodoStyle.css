@@ -7,7 +7,7 @@ input {
 	background-image : url("bg.jpg");
 }
 
-div.viewclass {
+.viewclass {
 	border: 2px solid black;
 	padding: 5px;
 	width: 250px;
@@ -15,11 +15,11 @@ div.viewclass {
 	cursor:pointer;
 }
 
-div.itemclass {
+.itemclass {
 	margin : 15px;
 }
 
-div.viewer {
+.viewer {
 	position : absolute;
 	border:2px solid black;
 	padding:2px;
@@ -28,7 +28,7 @@ div.viewer {
 	overflow : auto;
 }
 
-div.toggle {
+.toggle {
 	display:none;
 }
 
@@ -46,15 +46,15 @@ button:active {
 	background-color : white;
 }
 
-button.delete {
+.delete {
 	color : red;
 }
 
-button.done {
+.done {
 	color : green;
 }
 
-section.add {
+.add {
 	background-image : url("subtle_white_mini_waves.png");
 	position:absolute;
 	top : 130px;
@@ -64,19 +64,19 @@ section.add {
 	padding : 21px;
 }
 
-a.log {
+.log {
 	position:absolute;
 	right : 8px;
 	top : 30px;
 }
 
-section.tools {
+.tools {
 	position : absolute;
 	top : 100px;
 	right: 5px;
 }
 
-section.list {
+.list {
 	position : absolute;
 	left : 10px;
 	top : 70px;
@@ -84,14 +84,14 @@ section.list {
 
 h1 {
 	position : absolute;
-	top : 0px;
+	top : 0;
 	left : 8px;
 }
 
 hr {
 	position : absolute;
 	top : 57px;
-	height:0px;
+	height:0;
 	width:100%;
 }
 
