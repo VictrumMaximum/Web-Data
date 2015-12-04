@@ -4,13 +4,13 @@
 <link rel="stylesheet" type="text/css" href="TodoStyle.css">
 </head>
 <body>
-<header>
-		<h1> 99 Problems</h1>
-		<nav>
-			<a href="#"> Log Out</a> 
-		
-	
+	<header>
+		<div class="head">
+			<h1> 99 Problems</h1>
+			<a class="log" href="#"> Log Out</a>
+		</div>
 	</header>
+	<hr>
 	
 	<main>
 		<br>
@@ -18,7 +18,7 @@
 		<section class="tools">
 		<button class="add-menu"> Add </button>
 		<button class="settings-menu">Settings </button>
-		<button class="View-menu"> View </button>
+		<button class="View-menu" onclick="">Sort by date</button>
 		</section>
 		
 		<br>
@@ -36,16 +36,7 @@
 		<!-- section with todo list -->
 		<section class="list">
 			<h2> Problem List</h2>
-			<div id="viewer"></div>
-				<!-- a example section that js will duplicate
-				<section <!-- class="section-todo" id="sectiontodo">
-						<h3 class="name-todo"> example name</h3>
-						<q class="description-todo"> example description</q><br>
-						<q class="date-todo"> example date </q><br>
-						<q	class="reminder-todo"> example reminder</q><br>
-						<q class="rating-todo">	example rating</q><br>
-						
-				</section> -->
+			<div id="viewer" class="viewer"></div>
 		</section>
 
 		

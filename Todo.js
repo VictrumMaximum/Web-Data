@@ -12,7 +12,7 @@ function  TodoItem(name, Date, desc, remind, rating) {
 			+ "] ")};
 	}
 			
-var list = [];
+list = [];
 var counter = 0;
 		
 TodoItem.prototype.setName = function(name) {this.name = name;};
@@ -28,7 +28,7 @@ TodoItem.prototype.getRating = function() {return this.rating;};
 			
 			
 function addItem() {
-	var item = new TodoItem("", "");
+	var item = new TodoItem();
 	item.setName(document.getElementById("namein").value);
 	item.setDesc(document.getElementById("descin").value);
 	item.setDate(document.getElementById("datein").value);
@@ -50,25 +50,32 @@ function addItem() {
 		
 	console.log(list.toString());
 	
-	var content = "Name: " + list[counter].name + 
-	"<br>Description: " + list[counter].desc +
+	var content = "<div class=\"viewclass\" id=\"toggler" + counter + "\" onClick=\"toggleText(" + counter + ");\">Name: " + list[counter].name + 
+	"<br><div id=\"toggle" + counter + "\" class=\"toggle\">Description: " + list[counter].desc +
 	"<br>Date: " + list[counter].Date +
 	"<br>Reminder: " + list[counter].remind +
 	"<br>Rating: " + list[counter].rating +
-	"<br> <button class=\"delete\" id=\"delete" + counter + "\" onclick=\"delItem(" + counter + ");\"> Delete</button>" +
+	"<br></div></div><div><button class=\"delete\" id=\"delete" + counter + "\" onclick=\"delItem(" + counter + ");\"> Delete</button>" +
 	"<button class=\"edit\" id=\"edit" + counter + "\" onclick=\"editItem(" + counter + ");\">Edit</button>" +
-	"<button class=\"done\">Done</button>";
+	"<button class=\"done\">Done</button></div>";
+	
+	//var content2 = ;
 	
 	var newDiv = document.createElement("div");
 	newDiv.id = "viewdiv" + counter;
-	newDiv.className = "viewclass";
-	
+	newDiv.className = "itemclass";
+	console.log("counter" + counter);
 	var br = document.createElement("br");
 	br.id = "divBreak" + counter;
+	
+	var newDiv2 = document.createElement("div");
+	newDiv2.id = "buttons" + counter;
+	
 	
 	document.getElementById("viewer").appendChild(newDiv);
 	document.getElementById("viewer").appendChild(br);
 	document.getElementById("viewdiv" + counter).innerHTML = content;
+	//document.getElementById("viewdiv" + counter).setAttribute("onClick", "toggleText(" + counter + ");" );
 	counter++;
 }
 			
@@ -90,11 +97,14 @@ function delItem(index) {
 function cleanup(index) {
 	for(var i = index + 1; i<list.length + 1; i++) {
 		//changes the onclick function parameter to match its position
-		document.getElementById("delete" + i).setAttribute( "onClick", "delItem(" + (i-1) + ");" );
+		document.getElementById("delete" + i).setAttribute("onClick", "delItem(" + (i-1) + ");" );
 		document.getElementById("delete" + i).id = "delete" + (i-1);
+		document.getElementById("toggler" + i).setAttribute("onClick", "toggleText(" + (i-1) + ");" );
+		document.getElementById("toggler" + i).id = "toggler" + (i-1);
+		document.getElementById("toggle" + i).id = "toggle" + (i-1);
 		document.getElementById("viewdiv" + i).id = "viewdiv" + (i-1);
 		document.getElementById("divBreak" + i).id = "divBreak" + (i-1);
-			
+		
 	}
 }
 
@@ -134,4 +144,27 @@ function saveItem(index) {
 	
 	document.getElementById("viewdiv" + index).innerHTML = content;
 }
+
+function toggleText(id) {
+    var theText = document.getElementById("toggle" + id);
+	console.log(theText.style.display);
+  (theText.style.display=='block') ? theText.style.display='none' : theText.style.display='block' ;  
+}
+
+/*function sortDate() {
+	if(list.length > 1) {
+		//for(var i = 1; i < list.length; i++) {
+			var st1 = list[i].Date;
+			var st2 = list[i - 1]
+			var pattern = /(\d{2})\-(\d{2})\-(\d{4})/;
+			var year1 = st1.replace(pattern, "$3");
+			var month1 = st1.replace(pattern, "$2");
+			var day1 = st1.replace(pattern, "$1");
+			var year2 = st2.replace(pattern, "$3");
+			var month2 = st2.replace(pattern, "$2");
+			var day2 = st2.replace(pattern, "$1");
+			if(year2)
+	//}
+	}
+}*/
 			

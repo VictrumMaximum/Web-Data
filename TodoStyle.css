@@ -1,5 +1,98 @@
+* {
+	border-radius : 5px;
+	font-family : Helvetica, sans-serif
+}
+
+input {
+	background-image : url("bg.jpg");
+}
+
 div.viewclass {
 	border: 2px solid black;
-	padding: 2px;
+	padding: 5px;
 	width: 250px;
+	background-image: url("green_cup.png");
+	cursor:pointer;
+}
+
+div.itemclass {
+	margin : 15px;
+}
+
+div.viewer {
+	position : absolute;
+	border:2px solid black;
+	padding:2px;
+	width : 300px;
+	height : 550px;
+	overflow : auto;
+}
+
+div.toggle {
+	display:none;
+}
+
+button {
+	font-weight : bold;
+	padding : 5px;
+}
+button.delete {
+	color : red;
+}
+
+button.done {
+	color : green;
+}
+
+section.add {
+	background-image : url("subtle_white_mini_waves.png");
+	position:absolute;
+	top : 130px;
+	right : 5px;
+	border : 3px solid black;
+	padding : 21px;
+}
+
+a.log {
+	position:absolute;
+	right : 8px;
+	top : 44px;
+}
+
+section.tools {
+	position : absolute;
+	top : 100px;
+	right: 5px;
+}
+
+section.list {
+	position : absolute;
+	left : 10px;
+	top : 70px;
+}
+
+h1 {
+	position : aboslute;
+	top : 5px;
+	left : 8px;
+}
+
+hr {
+	position : absolute;
+	top : 57px;
+	height:0px;
+	width:100%;
+}
+
+header {
+	position : relative;
+	background-image : url("subtle_white_mini_waves.png");
+	height : 57px;
+	z-index : 10;
+}
+
+body {
+	background-image : url("halftone.png");
+	background-repeat : repeat;
+	overflow : auto;
 }
