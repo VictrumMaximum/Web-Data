@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>99 problems</title>
+<link rel="stylesheet" type="text/css" href="TodoStyle.css">
+<script src="Todo.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+</head>
+<body onload="fetch()">
+	<header>
+		<div class="head">
+			<h1> 99 Problems</h1>
+			<a href="#"> Log Out</a>
+		</div>
+	</header>
+	<hr>
+	
+	<main>
+		<br>
+		<div class="menu">
+			<!-- button menu to work on list-->
+			<section class="tools">
+				<button class="add-menu" onClick="sendItems()"> Add </button>
+				<button class="settings-menu" onClick="fetch()">Settings </button>
+				<button onclick="checkList();">Sort by date</button>
+			</section>
+		
+			<br>
+			<!-- fill in the details of the list-->
+			<section class="add">
+				Name<br> <input type="text" id="namein" placeholder="Enter item name"><br>
+				Description<br> <input type="text" class="description-in" id="descin"placeholder="Enter item description"> <br>
+				Date<br> <input class="daymoin" type="text" id="dayin" placeholder="dd" maxlength="2">
+						 <input class="daymoin" type="text" id="monthin" placeholder="mm" maxlength="2">
+						 <input class="yearin" type="text" id="yearin" placeholder="yyyy" maxlength="4"><br>
+				Reminder<br> <input type="text" class="daymoin" id="remindday" placeholder="dd" maxlength="2"><input type="text" class="daymoin" id="remindmonth" placeholder="mm" maxlength="2"><input type="text" class="yearin" id="remindyear" placeholder="yyyy" maxlength="4"> <br>
+				Importance rating<br> <input type="text" class="rating-in" id="ratingin" placeholder="[1 - 5]"><br>
+				<button class="add-reminder" onclick="addItem();"> Add</button>
+			</section>
+		</div>
+		
+			<br>
+			<!-- section with todo list -->
+			<section class="list">
+				<h2> Problem List</h2>
+				<h4 id="counter">Items in list: 0</h4>
+				<div id="viewer" class="viewer"></div>
+			</section>
+		
+
+		
+	
+	</main>
+	
+	
+	<!--
+	<footer>
+	
+	
+	</footer>
+	-->
+</body>
+</html>

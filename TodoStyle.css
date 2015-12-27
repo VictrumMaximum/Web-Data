@@ -56,34 +56,23 @@ button:active {
 
 .add {
 	background-image : url("subtle_white_mini_waves.png");
-	position:absolute;
-	top : 130px;
-	right : 5px;
+	display : inline-block;
 	border : 3px solid black;
 	height : 230px;
 	padding : 21px;
 }
 
 .log {
-	position:absolute;
-	right : 8px;
-	top : 30px;
-}
-
-.tools {
-	position : absolute;
-	top : 100px;
-	right: 5px;
+	display:inherit;
 }
 
 .list {
-	position : absolute;
-	left : 10px;
-	top : 70px;
+	display : inline-block;
+	top : 100px;
 }
 
 h1 {
-	position : absolute;
+	display : inherit;
 	top : 0;
 	left : 8px;
 }
@@ -93,9 +82,11 @@ hr {
 	top : 57px;
 	height:0;
 	width:100%;
+	color : black;
 }
 
 header {
+	display : inline;
 	position : relative;
 	background-image : url("subtle_white_mini_waves.png");
 	height : 57px;
@@ -106,4 +97,17 @@ body {
 	background-image : url("halftone.png");
 	background-repeat : repeat;
 	overflow : auto;
+	min-width : 700px;
+}
+
+.menu {
+	float : right;
+}
+
+.daymoin {
+	width : 25px;
+}
+
+.yearin {
+	width : 50px;
 }
